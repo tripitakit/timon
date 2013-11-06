@@ -7,7 +7,7 @@ timon
 A test-study for a Titanium Alloy client with custom sync adapter
 consuming the CRUD REST API of a self-hosted mongoDB Node.js (express) server app.
 
-The server app project repository:  [timon-serverk](https://github.com/tripitakit/timon-server)
+The server app project repository:  [timon-server](https://github.com/tripitakit/timon-server)
 
 
 References
