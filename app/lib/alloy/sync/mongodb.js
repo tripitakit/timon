@@ -28,7 +28,7 @@ module.exports.sync = function(method, model, options) {
                 // to a initialize model if the IDs are not set.
                 case 'create':
                         if (payload.name) {
-                                http_request('POST', BASE_URL, {name: payload.name, superpowers: payload(superpowers)}, callback);
+                                http_request('POST', BASE_URL, {name: payload.name, superpowers: payload.superpowers}, callback);
                         }
                         else {
                                 error = 'ERROR: Cannot create model without an author or title!';
@@ -49,7 +49,7 @@ module.exports.sync = function(method, model, options) {
                 // to update a model if they have IDs set.
                 case 'update':
                         if (payload[model.idAttribute]) {
-                                http_request('PUT', BASE_URL + payload[model.idAttribute], {name: payload.name, superpowers: payload(superpowers)}, callback);
+                                http_request('PUT', BASE_URL + payload[model.idAttribute], {name: payload.name, superpowers: payload.superpowers}, callback);
                         }
                         else {
                                 error = 'ERROR: Model does not have an ID!';
