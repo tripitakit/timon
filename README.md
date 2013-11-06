@@ -1,7 +1,8 @@
 timon
 ===
 
-Titanium Alloy client with custom sync adapter consuming the CRUD REST API of a self-hosted mongoDB Node.js (express) server app.
+A test-study for a Titanium Alloy client with custom sync adapter
+consuming the CRUD REST API of a self-hosted mongoDB Node.js (express) server app.
 
 
 References
