@@ -1,118 +1,106 @@
-// This sync adapter makes HTTP requests to the timons srvice to manage data
+// This sync adapter makes HTTP requests to the TimonServer
 
-// Global URL variable
-var BASE_URL = 'http://192.168.1.100:3000/';
 
 // Override the Backbone.sync method with the following
 module.exports.sync = function(method, model, options) {
+	
+	
+	var payload = model.toJSON();
+	
+	var doc_id = payload._id;
+	
+	delete(payload._id); // or mongo db will complain for its presence in update
+	
+	var error;
 
-        var payload = model.toJSON();
-        var error;
+	switch(method) {
+		case 'read':
+			if (doc_id) {
+				http_request('GET', BASE_URL + doc_id, null, callback);
+			}
+			else {
+				http_request('GET', BASE_URL, null, callback);
+			}
+			break;
 
-        switch(method) {
+		case 'create':
+			if (model.isValid()) {
+				http_request('POST', BASE_URL, payload, callback);
+			}
+			else {
+				error = 'ERROR: Cannot create invalid model!';
+			}
+			break;
 
-                // This case is called by the Model.fetch and Collection.fetch methods to retrieve data.
-                case 'read':
-                        // Use the idAttribute property in case the model ID is set to something else besides 'id'
-                        if (payload[model.idAttribute]) {
-                                // If we have an ID, fetch only one document
-                                http_request('GET', BASE_URL + payload[model.idAttribute], null, callback);
-                        }
-                        else {
-                                // if not, fetch all documents
-                                http_request('GET', BASE_URL, null, callback);
-                        }
-                        break;
+		case 'delete':
+			if (doc_id) {
+				http_request('DELETE', BASE_URL + doc_id, null, callback);
+			}
+			else {
+				error = 'ERROR: Model does not have an ID!';
+			}
+			break;
 
-                // This case is called by the Model.save and Collection.create methods
-                // to a initialize model if the IDs are not set.
-                case 'create':
-                        if (payload.name && payload.superpowers) {
-                                http_request('POST', BASE_URL, {name: payload.name, superpowers: payload.superpowers}, callback);
-                        }
-                        else {
-                                error = 'ERROR: Cannot create model without an name or superpowers!';
-                        }
-                        break;
+		case 'update':
+			if (doc_id) {
+				http_request('PUT', BASE_URL + doc_id, payload, callback);
+			}
+			else {
+				error = 'ERROR: Model does not have an ID!';
+			}
+			break;
 
-                // This case is called by the Model.destroy method to delete the model from storage.
-                case 'delete':
-                        if (payload[model.idAttribute]) {
-                                http_request('DELETE', BASE_URL + payload[model.idAttribute], null, callback);
-                        }
-                        else {
-                                error = 'ERROR: Model does not have an ID!';
-                        }
-                        break;
+		default :
+			error = 'ERROR: Sync method not recognized!';
+		};
 
-                // This case is called by the Model.save and Collection.create methods
-                // to update a model if they have IDs set.
-                case 'update':
-                        if (payload[model.idAttribute]) {
-                                http_request('PUT', BASE_URL + payload[model.idAttribute], {name: payload.name, superpowers: payload.superpowers}, callback);
-                        }
-                        else {
-                                error = 'ERROR: Model does not have an ID!';
-                        }
-                        break;
+		if (error) {
+			options.error(model, error, options);
+			Ti.API.error(error);
+			model.trigger('error');
+		}
 
-                default :
-                        error = 'ERROR: Sync method not recognized!';
-        };
-
-        if (error) {
-                options.error(model, error, options);
-                Ti.API.error(error);
-                model.trigger('error');
-        }
-
-        // Simple default callback function for HTTP request operations.
-        function callback(success, response, error) {
-                res = JSON.parse(response);
-                if (success) {
-                        // Calls the default Backbone success callback
-                        // and invokes a custom callback if options.success was defined.
-                        options.success(res, JSON.stringify(res), options);
-                }
-                else {
-                        // Calls the default Backbone error callback
-                        // and invokes a custom callback if options.error was defined.
-                        var err = res.error || error;
-                        Ti.API.error('ERROR: ' + err);
-                        options.error(model, error, options);
-                        model.trigger('error');
-                }
-        };
+		function callback(success, response, error) {
+		res = JSON.parse(response);
+		if (success) {
+			options.success(res, JSON.stringify(res), options);
+		}
+		else {
+			// Calls the default Backbone error callback
+			// and invokes a custom callback if options.error was defined.
+			var err = res.error || error;
+			Ti.API.error('ERROR: ' + err);
+			options.error(model, error, options);
+			model.trigger('error');
+		}
+	};
 };
 
-// Helper function for creating an HTTP request
+
 function http_request(method, url, payload, callback) {
-
-        var client = Ti.Network.createHTTPClient({
-                onload: function(e) {
-                        if (callback) callback(true, this.responseText, null);
-                },
-                onerror: function(e) {
-                        if (callback) callback(false, this.responseText, e.error);
-                },
-                timeout : 5000
-        });
-
-        client.open(method, url);
-        client.send(payload);
+	var client = Ti.Network.createHTTPClient({
+		onload: function(e) {
+			if (callback) callback(true, this.responseText, null);
+		},
+		onerror: function(e) {
+			if (callback) callback(false, this.responseText, e.error);
+		},
+		timeout : 5000
+	});
+	client.open(method, url);
+	client.send(payload);
 };
 
-// Perform some actions before creating the Model class
+
+
 module.exports.beforeModelCreate = function(config, name) {
-        config = config || {};
-        // If there is a base_url defined in the model file, use it
-        if (config.adapter.base_url) {
-                BASE_URL = config.adapter.base_url;
-        }
-        return config;
+	config = config || {};
+	if (config.adapter.base_url) {
+		BASE_URL = config.adapter.base_url;
+	}
+	return config;
 };
 
-// Perform some actions after creating the Model class 
-module.exports.afterModelCreate = function(Model, name) {
-        // Nothing to do
-};
+
+module.exports.afterModelCreate = function(Model, name) {};
+
