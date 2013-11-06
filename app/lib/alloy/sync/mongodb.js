@@ -4,7 +4,6 @@
 // Override the Backbone.sync method with the following
 module.exports.sync = function(method, model, options) {
 	
-	
 	var payload = model.toJSON();
 	
 	var doc_id = payload._id;
@@ -24,12 +23,7 @@ module.exports.sync = function(method, model, options) {
 			break;
 
 		case 'create':
-			if (model.isValid()) {
-				http_request('POST', BASE_URL, payload, callback);
-			}
-			else {
-				error = 'ERROR: Cannot create invalid model!';
-			}
+			http_request('POST', BASE_URL, payload, callback);
 			break;
 
 		case 'delete':
