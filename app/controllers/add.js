@@ -8,8 +8,8 @@ function saveTimon(e) {
 	dialogs.confirm({message: 'Are you sure you want to save?', callback: function() {
 		Alloy.Collections.timons.create(
 			{
-				title: $.name.value,
-				author: $.superpowers.value
+				name: $.name.value,
+				superpowers: $.superpowers.value
 			},
 			{
 				wait: true,
