@@ -1,4 +1,4 @@
-// This sync adapter makes HTTP requests to the BookService to manage data
+// This sync adapter makes HTTP requests to the timons srvice to manage data
 
 // Global URL variable
 var BASE_URL = 'http://192.168.1.100:3000/';
@@ -27,11 +27,11 @@ module.exports.sync = function(method, model, options) {
                 // This case is called by the Model.save and Collection.create methods
                 // to a initialize model if the IDs are not set.
                 case 'create':
-                        if (payload.name) {
+                        if (payload.name && payload.superpowers) {
                                 http_request('POST', BASE_URL, {name: payload.name, superpowers: payload.superpowers}, callback);
                         }
                         else {
-                                error = 'ERROR: Cannot create model without an author or title!';
+                                error = 'ERROR: Cannot create model without an name or superpowers!';
                         }
                         break;
 

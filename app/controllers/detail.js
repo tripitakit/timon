@@ -11,17 +11,28 @@ function closeMe(e) {
 }
 
 function updateTimon(e) {
-	dialogs.confirm({message: 'Are you sure you want to make changes?', callback: function() {
-		model.save({name: $.name.value, superpowers: $.superpowers.value});
-	}});
-}
+	dialogs.confirm(
+		{	message: 'Are you sure you want to make changes?',
+			callback: function() {
+				model.save({name: $.name.value, superpowers: $.superpowers.value}, 
+					{
+						success: function(model, response){
+							$.detail.close(); 
+						},
+						error: function(model, response){
+							alert(response);
+						}
+					}
+				);
+		}});
+};
 
 function deleteTimon(e) {
 	dialogs.confirm({message: 'Are you sure you want to delete this Timon?', callback: function() {
 		model.destroy({
 			wait: true,
 			success: function(mod, response, options) {
-				$.detail.close(); // Close the window
+				$.detail.close();
 			},
 			error: function(mod, response, options) {
 				alert(response);
