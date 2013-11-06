@@ -1,0 +1,12 @@
+<Alloy>
+	<Collection src="timons"/>
+	<Window title="My Timons" exitOnClose="true" onOpen="loadExtras">
+        <RightNavButton platform="ios">
+                <Button onClick="addTimon">Add</Button>
+        </RightNavButton>
+		<TableView dataCollection="timons" onDragEnd="refreshTable">
+			<TableViewRow title="{name}" color="black" onClick="showTimon"/>
+		</TableView>
+	</Window>
+</Alloy>
+

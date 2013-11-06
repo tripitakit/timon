@@ -1,0 +1,12 @@
+<Alloy>
+        <Window title="Add a Timon" onAndroidbackbutton="closeMe">
+                <RightNavButton platform="ios">
+                        <Button onClick="closeMe">Close</Button>
+                </RightNavButton>
+                <Label>Name:</Label>
+                <TextField id="name" width="200dp"/>
+                <Label>SuperPowers:</Label>                
+                <TextField id="superpowers" width="200dp"/>
+                <Button onClick="saveTimon">Save</Button>
+        </Window>
+</Alloy>
