@@ -13,7 +13,6 @@ function processStyle(controller, proxy, classes, opts, defaults) {
     proxy.apiName && (opts.apiName = proxy.apiName);
     proxy.id && (opts.id = proxy.id);
     proxy.applyProperties(exports.createStyle(controller, opts, defaults));
-    proxy.classes = classes;
 }
 
 function isTabletFallback() {
@@ -30,7 +29,7 @@ exports.Backbone = Backbone;
 
 var DEFAULT_WIDGET = "widget";
 
-var IDENTITY_TRANSFORM = Ti.UI.create2DMatrix();
+var IDENTITY_TRANSFORM = void 0;
 
 var RESET = {
     bottom: null,
@@ -52,24 +51,20 @@ var RESET = {
     enabled: true,
     horizontalWrap: true,
     zIndex: 0,
-    backgroundColor: "transparent",
+    backgroundColor: null,
     font: null,
     visible: true,
-    color: "#000",
-    transform: IDENTITY_TRANSFORM,
-    backgroundGradient: null,
-    borderColor: null,
-    borderRadius: null,
-    borderWidth: null
+    color: null,
+    transform: null,
+    backgroundGradient: {},
+    borderColor: "transparent",
+    borderRadius: 0,
+    borderWidth: 0
 };
 
 RESET = _.extend(RESET, {
-    backgroundDisabledColor: null,
-    backgroundDisabledImage: null,
-    backgroundFocusedColor: null,
-    backgroundFocusedImage: null,
-    focusable: false,
-    keepScreenOn: false
+    backgroundLeftCap: 0,
+    backgroundTopCap: 0
 });
 
 exports.M = function(name, modelDesc, migrations) {
@@ -228,8 +223,7 @@ exports.createCollection = function(name, args) {
 };
 
 exports.isTablet = function() {
-    var psc = Ti.Platform.Android.physicalSizeCategory;
-    return psc === Ti.Platform.Android.PHYSICAL_SIZE_CATEGORY_LARGE || psc === Ti.Platform.Android.PHYSICAL_SIZE_CATEGORY_XLARGE;
+    return "ipad" === Ti.Platform.osname;
 }();
 
 exports.isHandheld = !exports.isTablet;
@@ -249,7 +243,3 @@ exports.Collections.instance = function(name) {
 };
 
 exports.CFG = require("alloy/CFG");
-
-exports.Android = {};
-
-exports.Android.menuItemCreateArgs = [ "itemId", "groupId", "title", "order", "actionView", "checkable", "checked", "enabled", "icon", "showAsAction", "titleCondensed", "visible" ];

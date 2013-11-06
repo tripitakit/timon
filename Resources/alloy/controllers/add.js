@@ -6,7 +6,7 @@ function Controller() {
         dialogs.confirm({
             message: "Are you sure you want to save?",
             callback: function() {
-                Alloy.Collections.book.create({
+                Alloy.Collections.timons.create({
                     title: $.name.value,
                     author: $.superpowers.value
                 }, {
@@ -40,6 +40,12 @@ function Controller() {
     });
     $.__views.add && $.addTopLevelView($.__views.add);
     closeMe ? $.__views.add.addEventListener("androidbackbutton", closeMe) : __defers["$.__views.add!androidbackbutton!closeMe"] = true;
+    $.__views.__alloyId1 = Ti.UI.createButton({
+        title: "Close",
+        id: "__alloyId1"
+    });
+    closeMe ? $.__views.__alloyId1.addEventListener("click", closeMe) : __defers["$.__views.__alloyId1!click!closeMe"] = true;
+    $.__views.add.rightNavButton = $.__views.__alloyId1;
     $.__views.__alloyId2 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,

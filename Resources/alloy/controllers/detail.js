@@ -46,6 +46,12 @@ function Controller() {
     });
     $.__views.detail && $.addTopLevelView($.__views.detail);
     closeMe ? $.__views.detail.addEventListener("androidbackbutton", closeMe) : __defers["$.__views.detail!androidbackbutton!closeMe"] = true;
+    $.__views.__alloyId6 = Ti.UI.createButton({
+        title: "Close",
+        id: "__alloyId6"
+    });
+    closeMe ? $.__views.__alloyId6.addEventListener("click", closeMe) : __defers["$.__views.__alloyId6!click!closeMe"] = true;
+    $.__views.detail.rightNavButton = $.__views.__alloyId6;
     $.__views.__alloyId7 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -99,8 +105,8 @@ function Controller() {
     var args = arguments[0] || {};
     var timon = args.toJSON();
     var model = args;
-    $.superpowers.value = timon.name || "No name";
-    $.name.value = timon.title || "No superpowers";
+    $.name.value = timon.name || "No name";
+    $.superpowers.value = timon.superpowers || "No superpowers";
     var dialogs = require("alloy/dialogs");
     __defers["$.__views.detail!androidbackbutton!closeMe"] && $.__views.detail.addEventListener("androidbackbutton", closeMe);
     __defers["$.__views.__alloyId6!click!closeMe"] && $.__views.__alloyId6.addEventListener("click", closeMe);

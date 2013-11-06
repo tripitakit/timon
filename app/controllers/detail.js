@@ -1,8 +1,8 @@
 var args = arguments[0] || {};
 var timon = args.toJSON();
 var model = args;
-$.superpowers.value = timon.name || 'No name';
-$.name.value = timon.title || 'No superpowers';
+$.name.value = timon.name || 'No name';
+$.superpowers	.value = timon.superpowers || 'No superpowers';
 
 var dialogs = require('alloy/dialogs');
 
