@@ -1,15 +1,18 @@
-// This sync adapter makes HTTP requests to the TimonServer
+/*
+ * ti-mongodb.js
+ * 
+ * Copyright (c) 2013 Patrick De Marta
+ * Licensed under the MIT license.
+ */
 
+var BASE_URL; // set in beforeModelCreate from the model config
 
 // Override the Backbone.sync method with the following
 module.exports.sync = function(method, model, options) {
 	
 	var payload = model.toJSON();
-	
 	var doc_id = payload._id;
-	
 	delete(payload._id); // or mongo db will complain for its presence in update
-	
 	var error;
 
 	switch(method) {
@@ -58,8 +61,7 @@ module.exports.sync = function(method, model, options) {
 		res = JSON.parse(response);
 		if (success) {
 			options.success(res, JSON.stringify(res), options);
-		}
-		else {
+		} else {
 			// Calls the default Backbone error callback
 			// and invokes a custom callback if options.error was defined.
 			var err = res.error || error;
