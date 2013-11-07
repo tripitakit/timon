@@ -23,5 +23,5 @@ Work is in progress for Create, Update, Delete operations.
 
 This project will eventually evolve into something useful, for now it is an interesting test-study.
 
-###pumbaa###
+###Pumbaa, the server###
 The mongoDB Node.js Express server-application's project is [pumbaa](https://github.com/tripitakit/pumbaa)
