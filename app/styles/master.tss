@@ -1,14 +1,3 @@
-"#master[platform=android]": {
-    exitOnClose: true
-},
-"#header": {
-    height: '50dp',
-    width: Ti.UI.FILL,
-    textAlign: 'center',
-    backgroundColor: '#44f',
-    color: '#fff',
-    font: {
-        fontSize: '24dp',
-        fontWeight: 'bold'
-    }
+"#container": {
+	top:"40dp",
 }

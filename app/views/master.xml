@@ -1,6 +1,7 @@
 <Alloy>
 	<Window title="Docs">
-		<TableView id="table" onClick="openDetail">
-		</TableView>
+		<View id='container'>
+			<TableView id="table" onClick="openDetail"/>
+		</View>
 	</Window>
 </Alloy>

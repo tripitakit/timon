@@ -1,20 +1,5 @@
 "#row": {
 	backgroundColor: "#fff",
-	height: '60dp'
+	height: '60dp',
+	font:{fontStyle:"bold"}
 },
-"#name": {
-    top: '5dp',
-    left: '10dp',
-    font: {
-        fontSize: '24dp',
-        fontWeight: 'bold'
-    }
-},
-"#nickname": {
-    bottom: '5dp',
-    left: '20dp',
-    font: {
-        fontSize: '16dp',
-        fontWeight: 'normal'
-    }
-}
