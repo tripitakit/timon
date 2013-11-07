@@ -1,12 +1,15 @@
-Alloy.Globals.docs.fetch({
-	success: function(coll, res){
-		Ti.API.info("Docs FETCHED : " + JSON.stringify(coll.models));
-		setMasterData(coll.toJSON())
-	},
-	error: function(err, res){
-		Ti.API.info("Docs FETCH ERROR ! " + err);
-	}
-});
+
+function refreshTable(){
+	Alloy.Globals.docs.fetch({
+		success: function(coll, res){
+			Ti.API.info("Docs FETCHED : " + JSON.stringify(coll.models));
+			setMasterData(coll.toJSON())
+		},
+		error: function(err, res){
+			Ti.API.info("Docs FETCH ERROR ! " + err);
+		}
+	});
+};
 
 function setMasterData(docs) {
 	
@@ -30,3 +33,6 @@ function openDetail(e) {
 	$.trigger('detail', e);
 };
 
+
+refreshTable();
+	

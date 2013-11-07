@@ -1,3 +1,8 @@
+"TableView": {
+	editable:true,
+	moveable:true,
+},
+
 "#container": {
 	top:"40dp",
-}
+},

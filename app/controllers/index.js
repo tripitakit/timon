@@ -9,5 +9,4 @@ $.master.on('detail', function(e) {
 	controller.createAttributeView(e.row._id);
 });
 
-
 $.index.open();
