@@ -1,5 +1,4 @@
 "Window": {
-	modal: true,
 	backgroundColor: 'white',
 	layout: 'vertical'
 },
