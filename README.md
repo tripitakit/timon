@@ -24,4 +24,4 @@ Work is in progress for Create, Update, Delete operations.
 This project will eventually evolve into something useful, for now it is an interesting test-study.
 
 #####pumbaa#####
-The MonoDB-Node.js server application's project is [pumbaa](https://github.com/tripitakit/pumbaa)
+The mongoDB Node.js Express server-application's project is [pumbaa](https://github.com/tripitakit/pumbaa)
