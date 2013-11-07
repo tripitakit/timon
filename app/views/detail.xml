@@ -1,16 +1,3 @@
 <Alloy>
-	<Window title="Timon Details" onAndroidbackbutton="closeMe">
-		<RightNavButton platform="ios">
-			<Button onClick="closeMe">Close</Button>
-		</RightNavButton>
-		
-		<Label>Name:</Label>
-		<TextField id="name"/>
-		
-		<Label>Superpowers:</Label>                
-		<TextField id="superpowers"/>
-		
-		<Button onClick="updateTimon">Save Edits</Button>
-		<Button onClick="deleteTimon">Remove</Button>        
-	</Window>
+	<Window layout="vertical"/>
 </Alloy>

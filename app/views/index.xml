@@ -1,12 +1,6 @@
 <Alloy>
-	<Collection src="timons"/>
-	<Window title="My Timons" exitOnClose="true" onOpen="loadExtras">
-        <RightNavButton platform="ios">
-                <Button onClick="addTimon">Add</Button>
-        </RightNavButton>
-		<TableView dataCollection="timons" onDragEnd="refreshTable">
-			<TableViewRow title="{name}" color="black" onClick="showTimon"/>
-		</TableView>
-	</Window>
+    <SplitWindow id="index" formFactor="tablet" showMasterInPortrait="true">
+		<Require src="master" id="master"/>
+		<Require src="detail" id="detail"/>
+	</SplitWindow>
 </Alloy>
-

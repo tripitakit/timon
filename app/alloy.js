@@ -9,3 +9,7 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+
+
+// Boostrap docs 
+Alloy.Globals.docs = Alloy.Collections.instance('docs');

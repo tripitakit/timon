@@ -5,7 +5,7 @@
  * Licensed under the MIT license.
  */
 
-var BASE_URL; // set in beforeModelCreate from the model config
+var API_URL; // set in beforeModelCreate from the model config
 
 // Override the Backbone.sync method with the following
 module.exports.sync = function(method, model, options) {
@@ -18,20 +18,20 @@ module.exports.sync = function(method, model, options) {
 	switch(method) {
 		case 'read':
 			if (doc_id) {
-				http_request('GET', BASE_URL + doc_id, null, callback);
+				http_request('GET', API_URL + doc_id, null, callback);
 			}
 			else {
-				http_request('GET', BASE_URL, null, callback);
+				http_request('GET', API_URL, null, callback);
 			}
 			break;
 
 		case 'create':
-			http_request('POST', BASE_URL, payload, callback);
+			http_request('POST', API_URL, payload, callback);
 			break;
 
 		case 'delete':
 			if (doc_id) {
-				http_request('DELETE', BASE_URL + doc_id, null, callback);
+				http_request('DELETE', API_URL+'/'+doc_id, null, callback);
 			}
 			else {
 				error = 'ERROR: Model does not have an ID!';
@@ -40,7 +40,7 @@ module.exports.sync = function(method, model, options) {
 
 		case 'update':
 			if (doc_id) {
-				http_request('PUT', BASE_URL + doc_id, payload, callback);
+				http_request('PUT', API_URL+'/'+doc_id, payload, callback);
 			}
 			else {
 				error = 'ERROR: Model does not have an ID!';
@@ -92,7 +92,7 @@ function http_request(method, url, payload, callback) {
 module.exports.beforeModelCreate = function(config, name) {
 	config = config || {};
 	if (config.adapter.base_url) {
-		BASE_URL = config.adapter.base_url;
+		API_URL = config.adapter.base_url + "/" + config.adapter.collection_name;
 	}
 	return config;
 };
