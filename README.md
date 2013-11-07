@@ -17,11 +17,11 @@ It displays a collection of models which can differ in attributes structures, fe
 from the mongoDB database server-app. The "_id" attribute is used for models' titles,
 in order to handle the collection of schema-less models/documents.
 
-### Devel progress status ###
+## Devel progress status ##
 Fetching and displaying of mongodb documents.
 Work is in progress for Create, Update, Delete operations.
 
 This project will eventually evolve into something useful, for now it is an interesting test-study.
 
-#####pumbaa#####
+###pumbaa###
 The mongoDB Node.js Express server-application's project is [pumbaa](https://github.com/tripitakit/pumbaa)
