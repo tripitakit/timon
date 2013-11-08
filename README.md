@@ -6,7 +6,7 @@
 
 Appcelerator Titanium Alloy test-study client app for a mongoDB crud rest api.
 
-This project builds an iOS-iPad client app (timon) of a self-hosted mongoDB Node.js (Express)
+This project builds an iPad client application (timon) for a self-hosted (mongoDB + node.js + express)
 server application (pumbaa).
 
 Timon presents a custom Alloy sync adapter, named ti-mongodb, which allows basic crud operation
