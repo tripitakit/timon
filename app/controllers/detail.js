@@ -3,6 +3,9 @@
  * exports a method which dynamically populate the data-box
  * with the attribute for the document selected by "_id"
  */
+
+
+
 exports.createAttributeView = function(_id) {
 	
 	var doc = Alloy.Globals.docs.where({_id:_id})[0].toJSON();
@@ -57,6 +60,9 @@ exports.createAttributeView = function(_id) {
 
 };
 
+exports.cleanDataBox = function(){
+	$.detail.remove($.data_box);
+}
 
 
 

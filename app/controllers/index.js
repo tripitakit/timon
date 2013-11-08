@@ -5,9 +5,14 @@
  */
 
 $.master.on('detail', function(e) {
+	
 	var controller = $.detail;
-	//var win = controller.getView();
 	controller.createAttributeView(e.row._id);
+});
+
+$.master.on('cleandetail', function() {
+	var controller = $.detail;
+	controller.cleanDataBox();
 });
 
 $.index.open();

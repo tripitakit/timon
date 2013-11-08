@@ -27,4 +27,22 @@ function openDetail(e) {
 	$.trigger('detail', e);
 };
 
+
+function deleteDoc(e){
+	var dialogs = require('alloy/dialogs');  
+	dialogs.confirm({message: 'Are you sure you want to delete this document?', callback: function() {
+		var model = Alloy.Globals.docs.where({_id:e.row._id})[0];
+		model.destroy({
+			wait: true,
+			success: function(mod, response, options) {
+				// clean data-box in detail win
+				$.trigger("cleandetail")
+			},
+			error: function(mod, response, options) {
+				alert(response);
+			}
+		});
+	}});
+};
+
 refreshTable();	

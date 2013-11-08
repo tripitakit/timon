@@ -1,7 +1,7 @@
 <Alloy>
 	<Window title="Docs">
 		<View id='container'>
-			<TableView id="table" onClick="openDetail" onDragEnd="refreshTable"/>
+			<TableView id="table" onClick="openDetail" onDragEnd="refreshTable" onDelete="deleteDoc"/>
 		</View>
 	</Window>
 </Alloy>

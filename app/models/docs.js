@@ -11,7 +11,7 @@ exports.definition = {
 	    	adapter: {
 			type: "ti-mongodb",
 			collection_name: "docs",
-			base_url: "http://192.168.1.100:3000"
+			base_url: "http://pumbaa.iosvappo.it"
 		}
 	},
 	
