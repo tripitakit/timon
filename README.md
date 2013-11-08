@@ -18,8 +18,11 @@ from the mongoDB database server-app. The "_id" attribute is used for models' ti
 in order to handle the collection of schema-less models/documents.
 
 ## Devel progress status ##
-Fetching and displaying of mongodb documents.
-Work is in progress for Create, Update, Delete operations.
+- Fetch and display a collection of mongodb documents.
+- Delete documents from the collection.
+- Lifted a public pumbaa server and pointed the app to it
+
+Work is in progress for Create, Update operations.
 
 This project will eventually evolve into something useful, for now it is an interesting test-study.
 
