@@ -7,10 +7,9 @@
 var header = Alloy.createController('header').getView();
 $.table.setHeaderView(header)
 
-function refreshTable(){
+var refreshTable = function() {
 	// fetch docs and set the master data
 	Alloy.Globals.docs.fetch({
-
 		success: function(collection){
 			var data = [];
 			_.each(collection.toJSON(), function(doc) {
@@ -19,12 +18,12 @@ function refreshTable(){
 			});
 			$.table.setData(data);
 		},
-
 		error: function(err, res){
 			Ti.API.debug(err)
 		}
 	});
 };
+
 
 function openDetail(e) {
 	$.trigger('detail', e);
@@ -48,4 +47,6 @@ function deleteDoc(e){
 	}});
 };
 
-refreshTable();	
+exports.refreshTable = refreshTable;
+
+
