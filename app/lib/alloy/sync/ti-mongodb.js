@@ -20,7 +20,7 @@ module.exports.sync = function(method, model, options) {
 		doc_id = payload._id,
 		error;
 	
-	// to succesfully update mongo document
+	// to succesfully update mongoDB documents
 	delete(payload._id);
 
 	switch(method) {
@@ -66,17 +66,17 @@ module.exports.sync = function(method, model, options) {
 		}
 
 		function callback(success, response, error) {
-		res = JSON.parse(response);
-		if (success) {
-			options.success(res, JSON.stringify(res), options);
-		} else {
-			// Calls the default Backbone error callback
-			// and invokes a custom callback if options.error was defined.
-			var err = res.error || error;
-			Ti.API.error('ERROR: ' + err);
-			options.error(model, error, options);
-			model.trigger('error');
-		}
+			res = JSON.parse(response);
+			if (success) {
+				options.success(res, JSON.stringify(res), options);
+			} else {
+				// Calls the default Backbone error callback
+				// and invokes a custom callback if options.error was defined.
+				var err = res.error || error;
+				Ti.API.error('ERROR: ' + err);
+				options.error(model, error, options);
+				model.trigger('error');
+			}
 	};
 };
 
