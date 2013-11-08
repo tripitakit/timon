@@ -17,14 +17,17 @@ It displays a collection of models which can differ in attributes structures, fe
 from the mongoDB database server-app. The "_id" attribute is used for models' titles,
 in order to handle the collection of schema-less models/documents.
 
-## Devel progress status ##
-- Fetch and display a collection of mongodb documents.
-- Update and Delete documents from the collection.
-- Lifted a public pumbaa server and pointed the app to it
+## Features ##
+- iPad native SplitWindow UI
+- Custom Alloy sync adapter, ti-mongodb
+- Fetch a collection of mongodb documents with schema-free models into an Alloy/backbone collection
+- Display, Create, Update and Delete documents
 
-Work is in progress for Create operations.
-
-This project will eventually evolve into something useful, for now it is an interesting test-study.
+This project will eventually evolve into something useful, for now it is an intriguing proof of concept study.
 
 ###Pumbaa, the server###
 The mongoDB Node.js Express server-application's project is [pumbaa](https://github.com/tripitakit/pumbaa)
+Thre is a live **pumbaa** instance to test the app (http://pumbaa.iosvappo.it)
+In your browser see the (client default) docs collection @ http://pumbaa.iosvappo.it/docs.
+
+
