@@ -1,3 +1,10 @@
+/**
+ * docs.js
+ * 
+ * No need to define a columns obejct in the the model config.
+ * Define collection name as the name of mongoDB collection to use.
+ */
+
 exports.definition = {
 
 	config: {
@@ -8,7 +15,6 @@ exports.definition = {
 		}
 	},
 	
-
 	extendModel: function(Model) {
 		_.extend(Model.prototype, {
 			
@@ -21,7 +27,6 @@ exports.definition = {
 		return Model;
 	},
 	
-
 	extendCollection: function(Collection) {
 		_.extend(Collection.prototype, {
 			// extended functions and properties go here

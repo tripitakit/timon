@@ -1,19 +1,27 @@
-/*
+/****
  * ti-mongodb.js
- * 
+ * Custom Alloy Sync Adapter 
+ * CRUD operation with REST API of a remote mongoDB server application.
+ *
  * Copyright (c) 2013 Patrick De Marta
  * Licensed under the MIT license.
  */
 
-var API_URL; // set in beforeModelCreate from the model config
+
+/* The complete url set in beforeModelCreate from the model config
+ *  with the collection name that the adapter will request for.
+ */
+var API_URL; 
 
 // Override the Backbone.sync method with the following
 module.exports.sync = function(method, model, options) {
 	
-	var payload = model.toJSON();
-	var doc_id = payload._id;
-	delete(payload._id); // or mongo db will complain for its presence in update
-	var error;
+	var payload = model.toJSON(),
+		doc_id = payload._id,
+		error;
+	
+	// to succesfully update mongo document
+	delete(payload._id);
 
 	switch(method) {
 		case 'read':
@@ -34,7 +42,7 @@ module.exports.sync = function(method, model, options) {
 				http_request('DELETE', API_URL+'/'+doc_id, null, callback);
 			}
 			else {
-				error = 'ERROR: Model does not have an ID!';
+				error = 'ERROR: Document does not have an ID!';
 			}
 			break;
 
@@ -43,7 +51,7 @@ module.exports.sync = function(method, model, options) {
 				http_request('PUT', API_URL+'/'+doc_id, payload, callback);
 			}
 			else {
-				error = 'ERROR: Model does not have an ID!';
+				error = 'ERROR: Document does not have an ID!';
 			}
 			break;
 

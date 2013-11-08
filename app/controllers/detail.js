@@ -1,11 +1,13 @@
+/**
+ * detail.js
+ * exports a method which dynamically populate the data-box
+ * with the attribute for the document selected by "_id"
+ */
 exports.createAttributeView = function(_id) {
 	
-	// find the doc by _id
 	var doc = Alloy.Globals.docs.where({_id:_id})[0].toJSON();
 	
-	var attributes_keys = _.keys(doc).sort(function(a, b) {
-		return a - b;
-	});
+	var attributes_keys = _.keys(doc).sort();
 	
 	$.data_box &&  $.detail.remove($.data_box);
 	
@@ -46,8 +48,7 @@ exports.createAttributeView = function(_id) {
 	
 	for (var i=0; i<attributes_keys.length; i++) {
 		var attribute = attributes_keys[i];
-		Ti.API.info("ATTRIBUTE IS " + attribute);
-		// add new data
+
 		$[attribute] = factory(attribute)
 		$.data_box.add($[attribute]);
 	}

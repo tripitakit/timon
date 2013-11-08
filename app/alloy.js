@@ -11,5 +11,5 @@
 // Alloy.Globals.someGlobalFunction = function(){};
 
 
-// Boostrap docs 
+// Global collection singleton 
 Alloy.Globals.docs = Alloy.Collections.instance('docs');
