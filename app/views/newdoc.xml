@@ -1,7 +1,4 @@
 <Alloy>
 	<Window>
-		<View id="doc"/>
-		<View id="new_attribute"/>
-		<Button title="[ Add attribute ]" onClick="newAttribute"/>
 	</Window>
 </Alloy>

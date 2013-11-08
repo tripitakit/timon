@@ -16,11 +16,8 @@ exports.createAttributeView = function(_id) {
 	var doc = model.toJSON();
 	
 	// make an array of alphabetical sorted doc's attributes
-	var attributes_keys = _.keys(doc).sort();
+	var attributes_keys = _.keys(doc);
 	
-	//remove property _id from attributes_keys 
-	attributes_keys.splice(attributes_keys[attributes_keys.indexOf("_id")], 1);
-		
 	// clean up old data-box if any
 	$.data_box &&  $.detail.remove($.data_box);
 	$.update_btn &&  $.detail.remove($.update_btn);
@@ -66,8 +63,10 @@ exports.createAttributeView = function(_id) {
 	 */
 
 	_.each(attributes_keys, function(attribute) {
-		$[attribute] = fieldFactory(attribute);
-		$.data_box.add($[attribute]);
+		if (attribute !== "_id") {
+			$[attribute] = fieldFactory(attribute);
+			$.data_box.add($[attribute]);
+		}	
 	});
 
 	/**/
@@ -97,8 +96,10 @@ exports.createAttributeView = function(_id) {
 	$.update_btn.addEventListener('click', function(){
 		var payload = {};
 		_.each(attributes_keys, function(attribute) {
-			var value = $[attribute].children[1].value;
-			payload[attribute] = value;
+			if (attribute !== "_id") {
+				var value = $[attribute].children[1].value;
+				payload[attribute] = value;
+			}
 		});
 		var dialogs = require('alloy/dialogs'); 
 		dialogs.confirm(
