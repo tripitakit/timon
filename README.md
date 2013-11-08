@@ -19,10 +19,10 @@ in order to handle the collection of schema-less models/documents.
 
 ## Devel progress status ##
 - Fetch and display a collection of mongodb documents.
-- Delete documents from the collection.
+- Update and Delete documents from the collection.
 - Lifted a public pumbaa server and pointed the app to it
 
-Work is in progress for Create, Update operations.
+Work is in progress for Create operations.
 
 This project will eventually evolve into something useful, for now it is an interesting test-study.
 
