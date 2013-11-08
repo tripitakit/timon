@@ -4,6 +4,9 @@
  * triggers the 'detail' event to show doc's details 
  */ 
 
+var header = Alloy.createController('header').getView();
+$.table.setHeaderView(header)
+
 function refreshTable(){
 	// fetch docs and set the master data
 	Alloy.Globals.docs.fetch({

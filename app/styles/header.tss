@@ -1,0 +1,15 @@
+".container" : {
+	height:"30dp",
+	backgroundColor: "#ededed",
+}
+"Button":{
+	top:"0",
+	height:"30dp",
+	left:"10dp",
+},
+"Label": {
+	textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
+	height:"30dp",
+	top:"0",
+	right:"10dp",
+}	

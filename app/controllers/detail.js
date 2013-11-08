@@ -55,7 +55,6 @@ exports.createAttributeView = function(_id) {
 	// form container
 	$.data_box = Ti.UI.createView({
 		layout:"vertical",
-		left:"20dp",
 		backgroundColor: "#fff",
 		width:"90%",
 		height:Ti.UI.SIZE
@@ -75,15 +74,15 @@ exports.createAttributeView = function(_id) {
 	
 	// display a title (the doc._id)
 	$.title_lbl = Ti.UI.createLabel({
-			top:"40dp",
-			width:"90%",
-			color: "#ededed",
-			backgroundColor: "#a3a3a3",
-			text: _id,
-			font: {
-				fontSize:"22dp",
-				fontWeight:"bold"
-			}
+		top:"40dp",
+		width:"90%",
+		color: "#ededed",
+		backgroundColor: "#a3a3a3",
+		text: _id,
+		font: {
+			fontSize:"22dp",
+			fontWeight:"bold"
+		}
 	});
 	$.detail.add($.title_lbl);
 	
@@ -128,14 +127,3 @@ exports.cleanDataBox = function(){
 	$.detail.remove($.update_btn);
 	$.detail.remove($.title_lbl);
 }
-
-
-
-
-
-
-
-
-
-
-
