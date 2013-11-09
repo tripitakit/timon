@@ -30,7 +30,12 @@
 		width: "33%"
 	});
 	$.saveDocdBtn.addEventListener('click', function() {
-		saveDocument();
+		if ($.doc_title.value) {
+			saveDocument();
+		} else {
+			alert("Please, give a title-name for the document to save!")
+		};
+
 	});
 
 	$.actionBar.add($.exitBtn);
@@ -48,6 +53,7 @@
 			hintText:"Give the document a title...",
 			height:"40dp",
 			font:{fontSize: 22, fontWeight:"bold"},
+			backgroundColor: "#fff"
 	}); 
 	$.newdoc.add($.doc_title)
 
