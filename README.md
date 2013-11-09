@@ -26,7 +26,7 @@ in order to handle the collection of schema-less models/documents.
 This project will eventually evolve into something useful, for now it is an intriguing proof of concept study.
 
 ###Pumbaa, the server###
-The mongoDB Node.js Express server project is [pumbaa](https://github.com/tripitakit/pumbaa/wiki)
+The mongoDB Node.js Express server project is [pumbaa](https://github.com/tripitakit/pumbaa/wiki/pumbaa)
 There is a live **pumbaa** server instance you can use to test the app (http://pumbaa.iosvappo.it)
 In your browser inspect the test docs collection linking to http://pumbaa.iosvappo.it/docs.
 
