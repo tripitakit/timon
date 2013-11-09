@@ -31,6 +31,8 @@ function openDetail(e) {
 
 
 function deleteDoc(e){
+    var row_index = e.index; 
+    var row_bkup = e.row;
 	
 	var dialog = Ti.UI.createAlertDialog({
 	    cancel: 1,
@@ -40,7 +42,10 @@ function deleteDoc(e){
 	  });
 	  dialog.addEventListener('click', function(e){
 	    if (e.index === e.source.cancel){
-			refreshTable();
+	        var restored = $.table.sections[0].getRows();
+	        restored.splice(row_index, 0, row_bkup);
+	        $.table.setData(restored);
+			
 	    } else if (e.index === 0) {
 			var model = Alloy.Globals.docs.where({_id:e.row._id})[0];
 			model.destroy({
