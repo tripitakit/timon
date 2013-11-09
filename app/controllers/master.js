@@ -31,20 +31,31 @@ function openDetail(e) {
 
 
 function deleteDoc(e){
-	var dialogs = require('alloy/dialogs');  
-	dialogs.confirm({message: 'Are you sure you want to delete this document?', callback: function() {
-		var model = Alloy.Globals.docs.where({_id:e.row._id})[0];
-		model.destroy({
-			wait: true,
-			success: function(mod, response, options) {
-				// clean data-box in detail win
-				$.trigger("cleandetail")
-			},
-			error: function(mod, response, options) {
-				alert(response);
-			}
-		});
-	}});
+	
+	var dialog = Ti.UI.createAlertDialog({
+	    cancel: 1,
+	    buttonNames: ['Confirm', 'Cancel'],
+	    message: 'Would you like to delete the document?',
+	    title: 'Delete'
+	  });
+	  dialog.addEventListener('click', function(e){
+	    if (e.index === e.source.cancel){
+			refreshTable();
+	    } else if (e.index === 0) {
+			var model = Alloy.Globals.docs.where({_id:e.row._id})[0];
+			model.destroy({
+				wait: true,
+				success: function(mod, response, options) {
+					// clean data-box in detail win
+					$.trigger("cleandetail")
+				},
+				error: function(mod, response, options) {
+					alert(response);
+				}
+			});
+	    }
+	  });
+	  dialog.show();
 };
 
 exports.refreshTable = refreshTable;

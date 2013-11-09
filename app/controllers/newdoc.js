@@ -33,9 +33,17 @@
 		if ($.doc_title.value) {
 			saveDocument();
 		} else {
-			alert("Please, give a title-name for the document to save!")
+			var dialog = Ti.UI.createAlertDialog({
+			    title: '"Please, enter a title for the new document to save!"',
+			    style: Ti.UI.iPhone.AlertDialogStyle.PLAIN_TEXT_INPUT,
+			    buttonNames: ['OK']
+			  });
+			  dialog.addEventListener('click', function(e){
+				  $.doc_title.value = e.text
+				  saveDocument();
+			  });
+			  dialog.show();
 		};
-
 	});
 
 	$.actionBar.add($.exitBtn);
