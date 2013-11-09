@@ -19,7 +19,7 @@ in order to handle the collection of schema-less models/documents.
 
 ## Features ##
 - iPad native SplitWindow UI
-- Custom Alloy sync adapter, ti-mongodb
+- Custom Alloy rest sync adapter to mongoDB: ti-mongodb
 - Fetch a collection of mongodb documents with schema-free models into an Alloy/backbone collection
 - Display, Create, Update and Delete documents
 
@@ -27,7 +27,9 @@ This project will eventually evolve into something useful, for now it is an intr
 
 ###Pumbaa, the server###
 The mongoDB Node.js Express server-application's project is [pumbaa](https://github.com/tripitakit/pumbaa)
-Thre is a live **pumbaa** instance to test the app (http://pumbaa.iosvappo.it)
-In your browser see the (client default) docs collection @ http://pumbaa.iosvappo.it/docs.
+There is a live **pumbaa** server instance you can use to test the app (http://pumbaa.iosvappo.it)
+In your browser inspect the test docs collection @ http://pumbaa.iosvappo.it/docs.
+
+Have fun :) !
 
 
