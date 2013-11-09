@@ -1,6 +1,6 @@
 <Alloy>
 	<View class="container">
-		<Button onClick="addDoc" title="[ Add ]"/>
 		<Label>Documents</Label>
+		<Button onClick="addDoc" title="[ Add ]"/>
 	</View>
 </Alloy>

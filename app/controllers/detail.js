@@ -26,23 +26,25 @@ exports.createAttributeView = function(_id) {
 	// returns a key:value form field view
 	var fieldFactory = function(attribute) {
 		var self = Ti.UI.createView({
-			top: "10dp",
+			top: "20dp",
 			left: "10dp",
 			width:Ti.UI.FILL,
 			height: Ti.UI.SIZE,
-			layout: "horizontal"
+			layout: "horizontal",
+			
 		});
 		var keyLabel = Ti.UI.createLabel({
-			width:Ti.UI.SIZE,
+			width:"25%",
 			font: {
-				fontSize:"15dp",
-				fontWeight:"bold"
+				fontSize:"14dp",
 			},
-			text: attribute+": "
+			text: attribute
 		});
 		var valueLabel = Ti.UI.createTextField({
-			width:Ti.UI.SIZE,
 			value: doc[attribute],
+			autocapitalization:false,
+			width:"72%",
+			backgroundColor:"#fff"
 		});
 		self.add(keyLabel);
 		self.add(valueLabel);
@@ -52,7 +54,7 @@ exports.createAttributeView = function(_id) {
 	// form container
 	$.data_box = Ti.UI.createView({
 		layout:"vertical",
-		backgroundColor: "#fff",
+		backgroundColor: "#efefef",
 		width:"90%",
 		height:Ti.UI.SIZE
 		
@@ -63,11 +65,15 @@ exports.createAttributeView = function(_id) {
 	 */
 
 	_.each(attributes_keys, function(attribute) {
-		if (attribute !== "_id") {
+		if (attribute !== "_id" && attribute !== "_title_") {
 			$[attribute] = fieldFactory(attribute);
 			$.data_box.add($[attribute]);
 		}	
 	});
+
+	$.data_box.add(Ti.UI.createView({
+		height:"10dp",
+	}));
 
 	/**/
 	
@@ -75,11 +81,11 @@ exports.createAttributeView = function(_id) {
 	$.title_lbl = Ti.UI.createLabel({
 		top:"40dp",
 		width:"90%",
-		color: "#ededed",
-		backgroundColor: "#a3a3a3",
-		text: _id,
+		color: "#efefef",
+		backgroundColor: "#020202",
+		text: " " + doc._title_,
 		font: {
-			fontSize:"22dp",
+			fontSize:"18dp",
 			fontWeight:"bold"
 		}
 	});
@@ -89,14 +95,14 @@ exports.createAttributeView = function(_id) {
 	
 	// Update button and operation
 	$.update_btn = Ti.UI.createButton({
-		title: "Update document",
+		title: "[ Update the document ]",
 		top:"40dp"
 	});
 	
 	$.update_btn.addEventListener('click', function(){
 		var payload = {};
 		_.each(attributes_keys, function(attribute) {
-			if (attribute !== "_id") {
+			if (attribute !== "_id" && attribute !== "_title_") {
 				var value = $[attribute].children[1].value;
 				payload[attribute] = value;
 			}

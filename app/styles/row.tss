@@ -1,5 +1,5 @@
 "#row": {
 	backgroundColor: "#fff",
 	height: '60dp',
-	font:{fontStyle:"bold"}
+	font:{fontStyle:"bold"},
 },

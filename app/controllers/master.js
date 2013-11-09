@@ -13,7 +13,7 @@ var refreshTable = function() {
 		success: function(collection){
 			var data = [];
 			_.each(collection.toJSON(), function(doc) {
-				var row = Alloy.createController('row', { _id: doc._id }).getView();
+				var row = Alloy.createController('row', { _id: doc._id, _title_:doc._title_}).getView();
 				data.push(row);
 			});
 			$.table.setData(data);

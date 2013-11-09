@@ -14,8 +14,8 @@ through a rest api in order to fetch and persist data on a remote mongoDB databa
 
 The UI implements a minimalistic SplitWindow with master/detail windows and native behaviour.
 It displays a collection of models which can differ in attributes structures, fetched 
-from the mongoDB database server-app. The "_id" attribute is used for models' titles,
-in order to handle the collection of schema-less models/documents.
+from the mongoDB database server-app.
+
 
 ## Features ##
 - iPad native SplitWindow UI

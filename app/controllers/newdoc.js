@@ -41,6 +41,17 @@
 // the action bar is on stage now
 
 
+// Title input
+	$.doc_title = Ti.UI.createTextField({
+			top:"20dp",
+			width:"90%",
+			hintText:"Give the document a title...",
+			height:"40dp",
+			font:{fontSize: 22, fontWeight:"bold"},
+	}); 
+	$.newdoc.add($.doc_title)
+
+
 /**
  * The new document's ScrollView field container
  */
@@ -61,7 +72,9 @@
 
 	// save the current document
 	function saveDocument(){
-		var payload = {}
+		var payload = {
+			_title_: $.doc_title.value,
+		};
 		// create a new model with the doc 
 		var formFields = $.doc.children
 		_.each(formFields, function(field){

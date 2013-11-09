@@ -14,7 +14,7 @@ $.master.on('cleandetail', function() {
 	controller.cleanDataBox();
 });
 
-$.index.addEventListener("focus", function(){
+$.index.addEventListener('focus', function(){
 	var controller = $.master;
 	controller.refreshTable();
 })

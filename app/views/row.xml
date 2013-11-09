@@ -1,5 +1,5 @@
 <Alloy>
 	<TableViewRow>
-		<Label id="_id"/>
+		<Label id="_title_"/>
 	</TableViewRow>
 </Alloy>
