@@ -130,7 +130,7 @@ exports.createAttributeView = function(_id) {
 };
 
 exports.cleanDataBox = function(){
-	$.detail.remove($.data_box);
-	$.detail.remove($.update_btn);
-	$.detail.remove($.title_lbl);
+	$.data_box && $.detail.remove($.data_box);
+	$.update_btn && $.detail.remove($.update_btn);
+	$.title_lbl && $.detail.remove($.title_lbl);
 }

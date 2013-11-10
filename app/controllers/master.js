@@ -47,7 +47,7 @@ function deleteDoc(e){
 	        $.table.setData(restored);
 			
 	    } else if (e.index === 0) {
-			var model = Alloy.Globals.docs.where({_id:e.row._id})[0];
+			var model = Alloy.Globals.docs.where({_id:row_bkup._id})[0];
 			model.destroy({
 				wait: true,
 				success: function(mod, response, options) {

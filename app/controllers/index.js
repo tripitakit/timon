@@ -3,6 +3,7 @@
  * Listen for 'detail' event triggered in master 
  * to show document's data in detail win
  */
+'use strict'
 
 $.master.on('detail', function(e) {
 	var controller = $.detail;
