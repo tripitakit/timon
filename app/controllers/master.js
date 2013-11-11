@@ -29,7 +29,6 @@ function openDetail(e) {
 	$.trigger('detail', e);
 };
 
-
 function deleteDoc(e){
     var row_index = e.index; 
     var row_bkup = e.row;

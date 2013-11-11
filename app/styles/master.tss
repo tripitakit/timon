@@ -1,6 +1,7 @@
 "TableView": {
-	editable:true,
-	moveable:true,
+	editing:true,
+	moving:true,
+	allowsSelectionDuringEditing: true,
 },
 
 "#container": {

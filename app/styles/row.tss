@@ -1,5 +1,4 @@
-"#row": {
-	backgroundColor: "#fff",
+"TableViewRow": {
+	backgroundColor: "#ffff",
 	height: '60dp',
-	font:{fontStyle:"bold"},
 },
